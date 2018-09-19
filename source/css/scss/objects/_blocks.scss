@@ -1,0 +1,16 @@
+/*------------------------------------*\
+    $Blocks
+\*------------------------------------*/
+
+.block {
+    @each $breakpoint, $layout in $block-layout {
+        @include breakpoint( $breakpoint ) {
+          $block-padding: map-get( $layout, padding );
+          padding-top: map-get( $block-padding, top );
+          padding-bottom: map-get( $block-padding, bottom );
+        }
+    }
+    &.block--stacked {
+        padding-top: 0;
+    }
+}

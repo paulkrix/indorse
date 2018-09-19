@@ -1,0 +1,232 @@
+/*------------------------------------*\
+ $VARIABLES
+ 1. Colors
+ 2. Breakpoints
+ 3. Font sizes
+ 4. Grid size
+ 5. Sections
+\*------------------------------------*/
+
+// ------------------------------------
+// 1. Colors
+// ------------------------------------
+
+$blue-indigo: rgba(85, 11, 109, 1);
+$blue-pale: rgba(146, 162, 222, 1);
+$blue-deep: rgba(28, 71, 147, 1);
+$yellow-pastel: rgba(254, 255, 229, 1);
+$orange-spice: rgba(209, 128, 3, 1);
+$burgandy-deep: rgba(50, 10, 28, 1);
+$pink-hot: rgba(226, 37, 122, 1);
+$green-light: rgba(156, 195, 152, 1);
+$pink-light-hot: rgba(222, 114, 163, 1);
+$pink-white-hot: rgba(255, 232, 242, 1);
+$green-dark: rgba(16, 36, 15, 1);
+$white: #fff;
+$black: #000;
+$transparent-white: rgba(255, 255, 255, 0.55);
+
+$white-palette:(
+  background: $white,
+  font: $black,
+  link: $blue-indigo,
+  divider: $burgandy-deep,
+  action-primary: $blue-indigo,
+  action-primary-font: $white,
+  action-secondary: $pink-hot,
+  action-secondary-font: $white,
+  action-tertiary: $blue-pale,
+  action-tertiary-font: $white,
+  alternate: $pink-white-hot,
+);
+
+$pink-palette:(
+  background: $pink-white-hot,
+  font: $black,
+  link: $blue-deep,
+  divider: $burgandy-deep,
+  action-primary: $blue-indigo,
+  action-primary-font: $white,
+  action-secondary: $pink-hot,
+  action-secondary-font: $white,
+  action-tertiary: $blue-pale,
+  action-tertiary-font: $white,
+  alternate: $white,
+);
+
+$dark-green-palette: (
+    background: $green-dark,
+    font: $yellow-pastel,
+    link: $orange-spice,
+    divider: $yellow-pastel,
+    action-primary: $blue-indigo,
+    action-primary-font: $white,
+    action-secondary: $pink-hot,
+    action-secondary-font: $white,
+    action-tertiary: $blue-pale,
+    action-tertiary-font: $white,
+    alternate: $white,
+);
+
+$colour-palette: (
+  default: $pink-palette,
+  white: $white-palette,
+  pink: $pink-palette,
+  green: $dark-green-palette,
+);
+
+// Breakpoints
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px
+);
+
+// Fonts
+$copy-font-family: 'EB Garamond', serif;
+// $heading-font-family: 'Oswald', sans-serif;
+$heading-font-family: 'Reem Kufi', sans-serif;
+$button-font-family: 'Oswald', sans-serif;
+$title-font-family: 'Reem Kufi', sans-serif;
+
+
+// Text
+$font-sizes: (
+  small: (
+    h1: rem-calc( 34px ),
+    h2: rem-calc( 28px ),
+    h3: rem-calc( 24px ),
+    h4: rem-calc( 20px ),
+    h5: rem-calc( 18px ),
+    h6: rem-calc( 16px )
+  ),
+  large: (
+    h1: rem-calc( 40px ),
+    h2: rem-calc( 32px ),
+    h3: rem-calc( 26px ),
+    h4: rem-calc( 24px ),
+    h5: rem-calc( 20px ),
+    h6: rem-calc( 18px )
+  )
+);
+
+$font-alignment: (
+  small: (
+    h1: center,
+    h2: center,
+    h3: center,
+    h4: center,
+    h5: center,
+    h6: center
+  )
+);
+
+// Grid
+$grid: (
+    breakpoint: medium,
+    columns: 10,
+    max-width: rem-calc( 1200px ),
+);
+
+//Text
+// $paragraph-margin: rem-calc( 30px );
+$paragraph-layout: (
+    small: (
+        margins: (
+            bottom: rem-calc( 30px ),
+            top: 0
+        )
+    ),
+    medium: (
+        margins: (
+            bottom: rem-calc( 45px ),
+            top: 0,
+        )
+    ),
+);
+
+// Section
+$section-layout: (
+    small: (
+        padding: (
+            left: 0,
+            right: 0,
+            bottom: 0,
+            top: 0
+        )
+    ),
+    medium: (
+        padding: (
+            left: 0,
+            right: 0,
+            bottom: 0,
+            top: 0,
+        )
+    ),
+);
+
+// Blocks
+$block-layout: (
+    small: (
+        padding: (
+            top: rem-calc( 30px ),
+            bottom: rem-calc( 30px ),
+        )
+    ),
+    medium: (
+        padding: (
+            top: rem-calc( 45px ),
+            bottom: rem-calc( 45px ),
+        )
+    )
+);
+
+$heading-block-layout: (
+    small: (
+        padding: (
+            top: rem-calc( 30px ),
+            bottom: rem-calc( 30px ),
+            right: rem-calc( 15px ),
+            left: rem-calc( 15px ),
+        )
+    )
+);
+
+$text-block-layout: (
+    small: (
+        padding: (
+            right: rem-calc( 15px ),
+            left: rem-calc( 15px ),
+        ),
+    ),
+    medium: (
+        padding: (
+            right: rem-calc( 0 ),
+            left: rem-calc( 0 ),
+        )
+    ),
+    large: (
+      width: 8
+    )
+);
+
+
+// Container
+$container-layout: (
+    small: (
+        margins: (
+            left: rem-calc( 15px ),
+            right: rem-calc( 15px ),
+        )
+    ),
+    xlarge: (
+        margins: (
+            left: auto,
+            right: auto,
+        )
+    ),
+);
+
+// The padding either side of a paragraph
+// $paragraph-padding: rem-calc( 15px );

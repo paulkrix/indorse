@@ -1,0 +1,68 @@
+/*------------------------------------*\
+    $Buttons
+\*------------------------------------*/
+
+.btn {
+    display: block;
+    font-family: $button-font-family;
+    font-size: rem-calc( 18px );
+    padding: rem-calc( 10px 25px );
+    width: 100%;
+    margin-top: rem-calc( 25px );
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    & + .btn {
+        margin-top: rem-calc( 10px );
+    }
+    &::after {
+        content: '\e900';
+        font-family: 'endorsed';
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 0.7em;
+        transform: translate( 0, -0.2em );
+        transition: transform 0.25s;
+    }
+    &:hover::after {
+        transform: translate( 10px, -0.2em );
+    }
+}
+
+.fab {
+    width: rem-calc( 50px );
+    height: rem-calc( 50px );
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    z-index: 100;
+
+    @each $class, $colours in $colour-palette {
+        @if $class == 'default' {
+            background: map-get( $colours, divider );
+        } @else {
+            .#{$class} & {
+                background: map-get( $colours, divider );
+            }
+        }
+    }
+    &:hover {
+
+      @each $class, $colours in $colour-palette {
+          @if $class == 'default' {
+              background: lighten( map-get( $colours, divider ), 10% );
+          } @else {
+              .#{$class} & {
+                  background: lighten( map-get( $colours, divider ), 10% );
+              }
+          }
+      }
+
+    }
+
+    .line {
+        @include colour-by-background( action-primary-font, background );
+        width: rem-calc( 20px );
+        left: calc( 50% - 10px );
+    }
+}

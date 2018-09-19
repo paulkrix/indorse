@@ -1,0 +1,20 @@
+.swatch {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+@each $class, $colours in $colour-palette {
+  .#{$class}.swatch {
+    position: relative;
+    &::before {
+      content: "#{map-get( $colours, background )}";
+      position: absolute;
+      width: 100%;
+      height: 20px;
+      bottom: 0px;
+      padding: 0 10px;
+      text-transform: uppercase;
+    }
+  }
+}

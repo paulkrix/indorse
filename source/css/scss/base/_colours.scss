@@ -1,0 +1,75 @@
+/*------------------------------------*\
+    $Colours
+\*------------------------------------*/
+
+@mixin colour-by-background( $colour-name, $attribute, $value-prefix:"" ) {
+    @each $class, $colours in $colour-palette {
+        @if $class == 'default' {
+            #{$attribute}: unquote($value-prefix) map-get( $colours, $colour-name );
+        } @else {
+            .#{$class} & {
+                #{$attribute}: unquote($value-prefix) map-get( $colours, $colour-name );
+            }
+        }
+    }
+}
+
+@mixin colour-styles( $palette ) {
+  color: map-get( $palette, font );
+  background-color: map-get( $palette, background );
+  .divider {
+    background-color: map-get( $palette, divider );
+  }
+  .alternate {
+    background-color: map-get( $palette, alternate );
+  }
+  blockquote {
+    border-color: map-get( $palette, divider );
+  }
+  a {
+    color: map-get( $palette, link );
+    &:hover {
+      color: darken( map-get( $palette, link ), 10% );
+    }
+  }
+  .btn {
+    background-color: map-get( $palette, action-primary );
+    color: map-get( $palette, action-primary-font );
+    // border: rem-calc( 2px ) solid map-get( $colours, action-primary );
+    &:hover {
+      // color: map-get( $colours, action-primary );
+      // background: map-get( $colours, action-primary-font );
+      // border-color: map-get( $colours, action-primary );
+      background-color: darken( map-get( $palette, action-primary ), 10% );
+      color: map-get( $palette, action-primary-font );
+    }
+  }
+  .btn.btn-secondary {
+    background-color: map-get( $palette, action-secondary );
+    color: map-get( $palette, action-secondary-font );
+    &:hover {
+      background: darken( map-get( $palette, action-secondary ), 10% );
+      color: map-get( $palette, action-secondary-font );
+    }
+  }
+  .btn.btn-tertiary {
+    background-color: map-get( $palette, action-tertiary );
+    color: map-get( $palette, action-tertiary-font );
+    &:hover {
+      background: darken( map-get( $palette, action-tertiary ), 10% );
+      color: map-get( $palette, action-tertiary-font );
+    }
+  }
+}
+
+@each $class, $colours in $colour-palette {
+  @if $class == 'default' {
+    body {
+      @include colour-styles( $colours );
+    }
+  } @else {
+    .#{$class} {
+      @include colour-styles( $colours );
+    }
+  }
+}

@@ -1,0 +1,17 @@
+$columns: map-get( $grid, columns );
+$column-width: 100%/$columns;
+$grid-initial-breakpoint: map-get( $grid, breakpoint );
+
+@mixin grid-padding( $offset ) {
+    @include breakpoint( $grid-initial-breakpoint ) {
+        padding-left: $column-width*$offset;
+        padding-right: $column-width*$offset;
+    }
+}
+
+@mixin grid-width( $columns ) {
+    // @include breakpoint( $grid-initial-breakpoint ) {
+        width: $column-width*$columns;
+        margin: 0 auto;
+    // }
+}

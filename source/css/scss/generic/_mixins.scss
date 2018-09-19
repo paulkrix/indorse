@@ -1,0 +1,27 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+// breakpoints
+// @mixin breakpoint( $breakpoint-name ) {
+//     @if map-has-key( $breakpoints, $breakpoint-name ) {
+//         @media( min-width: map-get( $breakpoints, $breakpoint-name ) ) { @content; }
+//     }
+// }
+@mixin breakpoint($mq-breakpoint, $mq-breakpoints: $breakpoints) {
+  // If $mq-breakpoint is a key that exists in
+  // $mq-breakpoints, get and use the value
+  @if map-has-key($mq-breakpoints, $mq-breakpoint) {
+    $mq-breakpoint: map-get($mq-breakpoints, $mq-breakpoint);
+  }
+
+  @media screen and (min-width: #{$mq-breakpoint}) {
+    @content;
+  }
+}
+
+@mixin max-width() {
+    max-width: map-get( $breakpoints, xlarge );
+    margin-left: auto;
+    margin-right: auto;
+}

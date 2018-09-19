@@ -1,0 +1,127 @@
+/*------------------------------------*\
+    $Text
+\*------------------------------------*/
+
+body {
+  font-family: $copy-font-family;
+}
+
+@mixin font-sizes($breakpoint) {
+  @if map-has-key($font-sizes, $breakpoint) {
+    $tags: map-get($font-sizes, $breakpoint);
+    @each $heading-tag, $font-size in $tags {
+      #{$heading-tag} {
+        font-size: $font-size;
+      }
+    }
+  }
+}
+
+@mixin font-alignment($breakpoint) {
+  @if map-has-key($font-alignment, $breakpoint) {
+    $tags: map-get($font-alignment, $breakpoint);
+    @each $heading-tag, $font-align in $tags {
+      #{$heading-tag} {
+        text-align: $font-align;
+      }
+    }
+  }
+}
+
+
+@each $breakpoint-name, $breakpoint in $breakpoints {
+  @if $breakpoint == 0 {
+    @include font-sizes($breakpoint-name);
+    @include font-alignment($breakpoint-name);
+  } @else {
+    @media(min-width: $breakpoint) {
+      @include font-sizes($breakpoint-name);
+      @include font-alignment($breakpoint-name);
+    }
+  }
+}
+
+p {
+    // margin-bottom: $paragraph-margin;
+    line-height: 1.3em;
+    font-size: rem-calc( 17px );
+    // @include breakpoint( medium ) {
+    //     margin-top: $block-spacing*2;
+    // }
+    @each $breakpoint, $layout in $paragraph-layout {
+        @include breakpoint( $breakpoint ) {
+          $paragraph-margins: map-get( $layout, margins );
+          margin-top: map-get( $paragraph-margins, top );
+          margin-bottom: map-get( $paragraph-margins, bottom );
+        }
+    }
+    a {
+      font-family: $copy-font-family;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $heading-font-family;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 1.1em;
+    word-break: break-word;
+}
+
+blockquote {
+    font-size: rem-calc( 23px );
+    line-height: 1.2em;
+    border-top: rem-calc( 3px ) solid;
+    border-bottom: rem-calc( 3px ) solid;
+    @each $breakpoint, $layout in $paragraph-layout {
+        @include breakpoint( $breakpoint ) {
+          $paragraph-margins: map-get( $layout, margins );
+          $margin-bottom: map-get( $paragraph-margins, bottom );
+          margin-top: map-get( $paragraph-margins, top );
+          margin-bottom: $margin-bottom;
+          padding-top: $margin-bottom;
+          padding-bottom: $margin-bottom;
+          padding-left: $margin-bottom;
+          padding-right: $margin-bottom;
+        }
+    }
+    // margin-bottom: $paragraph-margin;
+    // padding-top: $paragraph-margin;
+    // padding-bottom: $paragraph-margin;
+    // padding-right: $paragraph-margin;
+    // padding-left: $paragraph-margin;
+    // @include breakpoint( medium ) {
+    //     margin-top: $block-spacing*2;
+    // }
+}
+
+a {
+    font-family: $heading-font-family;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.divider {
+    width: rem-calc( 100px );
+    margin: 0 auto;
+    height: rem-calc( 2px );
+    @each $breakpoint, $layout in $paragraph-layout {
+        @include breakpoint( $breakpoint ) {
+          $paragraph-margins: map-get( $layout, margins );
+          margin-top: map-get( $paragraph-margins, top );
+          margin-bottom: map-get( $paragraph-margins, bottom );
+        }
+    }
+
+    // & + * {
+    //     margin-top: $block-spacing*1.5;
+    // }
+}

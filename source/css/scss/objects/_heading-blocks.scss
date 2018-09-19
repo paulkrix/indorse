@@ -1,0 +1,40 @@
+.block {
+    &.heading-block {
+        text-align: center;
+        position: relative;
+        @include grid-width( 8 );
+
+        @each $breakpoint, $layout in $heading-block-layout {
+            @include breakpoint( $breakpoint ) {
+              $block-padding: map-get( $layout, padding );
+              padding-top: map-get( $block-padding, top );
+              padding-bottom: map-get( $block-padding, bottom );
+              padding-left: map-get( $block-padding, left );
+              padding-right: map-get( $block-padding, right );
+            }
+        }
+
+        &.heading-block.heading-block--line-through {
+
+            h1, h2, h3, h4, h5, h6 {
+                display: inline-block;
+                position: relative;
+                padding: rem-calc( 0 15px );
+                @include colour-by-background( background, background-color );
+            }
+
+            &:before {
+                position: absolute;
+                content: "";
+                height: rem-calc( 7px );
+                top: 50%;
+                left: 0;
+                right: 0;
+                border-top: 1px solid;
+                border-bottom: 1px solid;
+                @include colour-by-background( divider, border-color );
+            }
+        }
+
+    }
+}

@@ -1,0 +1,8 @@
+.block {
+    &.image-block {
+        padding: 0;
+        @include max-width();
+        line-height: 0;
+        text-align: center;
+    }
+}

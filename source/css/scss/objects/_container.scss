@@ -1,0 +1,10 @@
+.container {
+    max-width: map-get( $grid, max-width );
+    @each $breakpoint, $layout in $container-layout {
+        @include breakpoint( $breakpoint ) {
+            $container-margins: map-get( $layout, margins );
+            margin-left: map-get( $container-margins, left );
+            margin-right: map-get( $container-margins, right );
+        }
+    }
+}

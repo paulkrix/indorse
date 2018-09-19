@@ -1,0 +1,60 @@
+/*------------------------------------*\
+    $Fonts
+\*------------------------------------*/
+// Icons
+
+@font-face {
+  font-family: 'endorsed';
+  src:  url('../fonts/endorsed/endorsed.eot?bkrbb1');
+  src:  url('../fonts/endorsed/endorsed.eot?bkrbb1#iefix') format('embedded-opentype'),
+    url('../fonts/endorsed/endorsed.ttf?bkrbb1') format('truetype'),
+    url('../fonts/endorsed/endorsed.woff?bkrbb1') format('woff'),
+    url('../fonts/endorsed/endorsed.svg?bkrbb1#endorsed') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'endorsed' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-right-arrow:before {
+  content: "\e900";
+  color: #fff;
+}
+
+.icon-expand:before {
+  content: "\e901";
+  color: #d18003;
+}
+
+.icon-expand2:before {
+  content: "\e902";
+  color: #d18003;
+}
+
+.icon-expand3:before {
+  content: "\e903";
+  color: #d18003;
+}
+
+.icon-close:before {
+  content: "\e904";
+  color: #d18003;
+}
+
+.icon-close-wide:before {
+  content: "\e905";
+  color: #d18003;
+}

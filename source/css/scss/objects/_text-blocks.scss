@@ -1,0 +1,33 @@
+.text-block {
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @each $breakpoint, $layout in $text-block-layout {
+        @include breakpoint( $breakpoint ) {
+            @if( map-has-key( $layout , padding ) ) {
+                $block-padding: map-get( $layout, padding );
+                padding-left: map-get( $block-padding, left );
+                padding-right: map-get( $block-padding, right );
+            }
+            @if( map-has-key( $layout , width ) ) {
+              @include grid-width(8);
+            }
+        }
+
+
+    }
+
+    &.text-block--block-cap > p:first-child {
+        &::first-letter {
+            font-size: 4em;
+            line-height: 0.95em;
+            float: left;
+            margin-right: rem-calc( 12px );
+        }
+    }
+    p {
+        @include grid-padding( 1 );
+    }
+
+}

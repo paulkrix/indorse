@@ -1,0 +1,102 @@
+.slider-block {
+    position: relative;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    .slider {
+
+        ul.slider__track {
+          list-style: none;
+          line-height: 0;
+        }
+
+        .slider__track {
+            margin: 0;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: rem-calc( 0 20px );
+
+            // &::before {
+            //   content: "";
+            //   display: block;
+            //   flex: 0 0 auto;
+            // }
+            &::after {
+              content: "";
+              display: block;
+              flex: 0 0 auto;
+              width: rem-calc( 20px );
+            }
+            .slider__slide {
+
+                flex: 0 0 auto;
+                display: inline-block;
+                position: relative;
+                padding: rem-calc( 0 5px );
+
+                img {
+                  display: block;
+                  height: rem-calc( 320px );
+                  max-width: none;
+                  width: auto;
+                }
+
+                .slider__slide-label {
+                    text-align: center;
+                    position: absolute;
+                    left: rem-calc( 5px );
+                    right: rem-calc( 5px );
+                    bottom: 0;
+                    padding: rem-calc( 15px );
+                    background: $transparent-white;
+                    color: $black;
+                }
+
+                p {
+                    margin: 0;
+                }
+
+                a:hover {
+                    .slider__slide-label {
+                        background: $pink-hot;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    &.slider-block--fit {
+        .slider {
+            .slider__track {
+                .slider__slide {
+                    max-width: 100%;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    .slider-block--no-pad {
+      padding: 0;
+    }
+
+}
+
+@each $class, $colours in $colour-palette {
+    .#{$class} {
+        $background-color: map-get( $colours, background );
+        .slider__fade--left {
+            background: linear-gradient(-90deg, rgba($background-color,0) 0%, $background-color 100%);
+        }
+        .slider__fade--right {
+            background: linear-gradient(90deg, rgba($background-color,0) 0%, $background-color 100%);
+        }
+    }
+}

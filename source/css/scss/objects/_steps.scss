@@ -1,0 +1,196 @@
+.steps-block {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .steps {
+        margin: 0;
+        list-style: none;
+        counter-reset: step-counter;
+        @include max-width();
+
+        .steps__step {
+            position: relative;
+            padding-left: rem-calc( 35px );
+            border-top: 1px solid $green-light;
+            counter-increment: step-counter;
+            cursor: pointer;
+
+            &:last-child {
+                border-bottom: 1px solid $green-light;
+            }
+
+            &:before {
+                content: counter( step-counter );
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: rem-calc( 35px );
+                bottom: 0;
+                //border-right: 1px solid $green-light;
+                text-align: center;
+                padding: rem-calc( 10px 0 );
+                font-size: rem-calc( 20px );
+                font-weight: 500;
+            }
+            &:after {
+                content: "\e900";
+                font-family: 'endorsed';
+                position: absolute;
+                right: 15px;
+                top: 18px;
+                width: 25px;
+                height: 11px;
+                font-size: 11px;
+                color: $orange-spice;
+            }
+
+            .steps__step--header {
+                margin-left: rem-calc( -35px );
+                padding-left: rem-calc( 35px );
+                //border-bottom: 1px solid $green-light;
+
+                h2 {
+                  font-family: $copy-font-family;
+                  text-align: left;
+                  text-transform: none;
+                  font-size: 17px;
+                  font-weight: 500;
+                  padding: rem-calc( 15px 15px 5px 0 );
+                }
+            }
+            .steps__step--image {
+                display: none;
+            }
+            .steps__step--meta {
+                display: none;
+            }
+            .steps__step--body {
+                padding: rem-calc( 0 45px 15px 0 );
+            }
+            .steps__step-close-btn {
+                display: none;
+            }
+
+            &:hover {
+                @include colour-by-background( alternate, background-color );
+                &:after {
+                    color: darken( $orange-spice, 10% );
+                }
+            }
+        }
+
+        &.owl-carousel {
+            max-width: none;
+            position: fixed;
+            top: 0;
+            background: white;
+            bottom: 0;
+            overflow-y: scroll;
+            z-index: 200;
+
+            .steps__step {
+                width: 100%;
+                padding: rem-calc( 0 0 35px 0 );
+                cursor: default;
+
+                border-bottom: none;
+
+                &:hover {
+                    background-color: inherit;
+                }
+                &:before {
+                    display: none;
+                }
+                &:after {
+                    display: none;
+                }
+                .steps__step--header {
+                    padding: rem-calc( 15px 15px );
+                    margin: 0;
+
+                    h2 {
+                        font-family: $heading-font-family;
+                        text-transform: uppercase;
+                        text-align: center;
+                        padding: rem-calc( 15px );
+                    }
+                }
+                .steps__step--image {
+                    display: block;
+                    margin: rem-calc( 0 );
+                    margin-bottom: rem-calc( 20px );
+                }
+                .steps__step--meta {
+                    display: block;
+                    margin: rem-calc( 0 15px 20px );
+                    border: 1px solid $green-light;
+                    border-top: 2px solid $green-light;
+                    list-style: none;
+                    border-collapse: collapse;
+
+                    li {
+                      display: flex;
+                      // border-top: 1px solid $green-light;
+                    }
+                    .steps__step--meta-quantity {
+                        border-right: 1px solid $green-light;
+                        padding: rem-calc( 5px );
+                        font-weight: 600;
+                        width: rem-calc( 35px );
+                        text-align: center;
+                    }
+                    .steps__step--meta-content {
+                        padding: rem-calc( 5px 7px );
+                    }
+                }
+                .steps__step--body {
+                    padding: rem-calc( 0 15px 15px  );
+                }
+                .steps__step-close-btn {
+                    display: block;
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    cursor: pointer;
+                    color: $orange-spice;
+                    font-size: rem-calc( 35px );
+                    &:hover {
+                        color: darken( $orange-spice, 10% );
+                    }
+                }
+            }
+            .owl-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: $white;;
+                button {
+                    width: 40%;
+                    padding: rem-calc( 15px )!important;
+                    background-color: $blue-pale;
+                    font-family: $heading-font-family;
+                    &:focus {
+                        outline: none;
+                    }
+                    &.owl-next {
+                        float: right;
+                    }
+                    &.disabled {
+                        opacity: 0.5;
+                        cursor: default;
+                    }
+                }
+                &:after {
+                    content: counter( step-counter );
+                    width: 20%;
+                    font-family: $heading-font-family;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

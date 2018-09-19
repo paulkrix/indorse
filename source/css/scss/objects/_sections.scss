@@ -1,0 +1,23 @@
+section {
+    @each $breakpoint, $layout in $section-layout {
+        @include breakpoint( $breakpoint ) {
+            $section-padding: map-get( $layout, padding );
+            padding-left: map-get( $section-padding, left );
+            padding-right: map-get( $section-padding, right );
+            padding-top: map-get( $section-padding, top );
+            padding-bottom: map-get( $section-padding, bottom );
+        }
+    }
+
+    // & > *:first-child {
+    //     margin-top: 0;
+    // }
+    // &.block-cap > p:first-child {
+    //     &::first-letter {
+    //         font-size: 4em;
+    //         line-height: 0.95em;
+    //         float: left;
+    //         margin-right: rem-calc( 12px );
+    //     }
+    // }
+}
