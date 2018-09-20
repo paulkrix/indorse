@@ -6,12 +6,29 @@ var Genesis = (function( my, $ ) {
     });
 
     // -------
-    // 1. Steps
-
+    // 1. Menu
+    // 2. Steps
     // *. Public variables and functions
     // -----
 
-    // 1. Steps
+    // 1. Menu
+    // --------
+
+    var Menu = function( _element, _button ) {
+        this.$element = $( _element );
+        this.$button = $( _button );
+        this.registerHandlers();
+    }
+    Menu.prototype.$element = null;
+    Menu.prototype.$button = null;
+
+    Menu.prototype.registerHandlers = function() {
+        this.$button.on('click', this.toggle );
+    }
+    Menu.prototype.toggle = function() {
+        $('body').toggleClass('body--menu-open');
+    }
+    // 2. Steps
     // --------
 
     var Steps = function( _element ) {
@@ -19,7 +36,6 @@ var Genesis = (function( my, $ ) {
         this.registerHandlers();
     }
     Steps.prototype.$element = null;
-    Steps.prototype.open = null;
 
     Steps.prototype.registerHandlers = function() {
         var steps = this;
@@ -46,11 +62,9 @@ var Genesis = (function( my, $ ) {
           nav: true,
           navText: [ 'PREV', 'NEXT' ]
         });
-        // this.$element.trigger( 'to.owl.carousel', index );
     }
 
     Steps.prototype.close = function() {
-        console.log("destroy");
         this.$element.trigger( 'destroy.owl.carousel' );
         this.$element.removeClass('owl-carousel');
     }
@@ -59,6 +73,7 @@ var Genesis = (function( my, $ ) {
     // --------
 
     my.Steps = Steps;
+    my.Menu = Menu;
     return my;
 
 }( Genesis || {}, jQuery ));

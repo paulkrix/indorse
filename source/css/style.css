@@ -747,6 +747,7 @@ nav .line {
   left: 1.875rem;
   right: 1.875rem;
   top: 50%;
+  transition: 250ms transform ease-out;
 }
 
 nav .line--1 {
@@ -761,6 +762,77 @@ nav .fab--menu {
   position: fixed;
   top: 0.625rem;
   right: 0.625rem;
+  transition: 250ms all ease-out;
+}
+
+.menu {
+  position: fixed;
+  width: 16.25rem;
+  right: -16.25rem;
+  top: 0;
+  bottom: 0;
+  transition: 250ms right ease-out;
+  background-color: #320a1c;
+  padding: 3.75rem 0 0;
+  text-align: right;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  padding: 0.9375rem 1.25rem;
+  display: block;
+  border-bottom: 1px solid #fff;
+}
+
+.menu a:first-child {
+  border-top: 1px solid #fff;
+}
+
+.menu a:hover {
+  color: #de72a3;
+}
+
+.non-menu {
+  transition: 250ms right ease-out;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+}
+
+.body--menu-open .non-menu {
+  right: 16.25rem;
+}
+
+.body--menu-open .menu {
+  display: block;
+  right: 0;
+}
+
+.body--menu-open nav .fab--menu {
+  top: 0.3125rem;
+  right: 0.3125rem;
+}
+
+.body--menu-open nav .fab--menu .line--1 {
+  transform: rotate(45deg);
+}
+
+.body--menu-open nav .fab--menu .line--2 {
+  transform: scaleX(0);
+}
+
+.body--menu-open nav .fab--menu .line--3 {
+  transform: rotate(-45deg);
 }
 
 /*------------------------------------*\
