@@ -41,7 +41,7 @@
                 width: 25px;
                 height: 11px;
                 font-size: 11px;
-                color: $orange-spice;
+                color: red;
             }
 
             .steps__step--header {
@@ -74,7 +74,7 @@
             &:hover {
                 @include colour-by-background( alternate, background-color );
                 &:after {
-                    color: darken( $orange-spice, 10% );
+                    color: darken( red, 10% );
                 }
             }
         }
@@ -152,10 +152,13 @@
                     top: 5px;
                     right: 5px;
                     cursor: pointer;
-                    color: $orange-spice;
+                    color: red;
                     font-size: rem-calc( 35px );
                     &:hover {
-                        color: darken( $orange-spice, 10% );
+                        color: darken( red, 10% );
+                    }
+                    &:before {
+                        color: inherit;
                     }
                 }
             }
@@ -170,6 +173,9 @@
                     padding: rem-calc( 15px )!important;
                     background-color: $blue-pale;
                     font-family: $heading-font-family;
+                    &:hover {
+                        background-color: darken( $blue-pale, 10% );
+                    }
                     &:focus {
                         outline: none;
                     }
@@ -179,10 +185,14 @@
                     &.disabled {
                         opacity: 0.5;
                         cursor: default;
+                        &:hover {
+                            background-color: $blue-pale
+                        }
                     }
                 }
                 &:after {
-                    content: counter( step-counter );
+                    //content: counter( step-counter );
+                    content: attr( data-index );
                     width: 20%;
                     font-family: $heading-font-family;
                     text-align: center;
@@ -193,4 +203,9 @@
             }
         }
     }
+}
+
+.pause-scroll {
+    position: fixed;
+    overflow: visible;
 }

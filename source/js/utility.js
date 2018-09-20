@@ -7,7 +7,7 @@ var Genesis = (function( my, $ ) {
 
     // -------
     // 1. Menu
-    // 2. Steps
+    // *. Steps
     // *. Public variables and functions
     // -----
 
@@ -28,7 +28,8 @@ var Genesis = (function( my, $ ) {
     Menu.prototype.toggle = function() {
         $('body').toggleClass('body--menu-open');
     }
-    // 2. Steps
+
+    // *. Steps
     // --------
 
     var Steps = function( _element ) {
@@ -36,6 +37,7 @@ var Genesis = (function( my, $ ) {
         this.registerHandlers();
     }
     Steps.prototype.$element = null;
+    Steps.prototype.storedScrollPosition = 0;
 
     Steps.prototype.registerHandlers = function() {
         var steps = this;
@@ -51,22 +53,38 @@ var Genesis = (function( my, $ ) {
     }
 
     Steps.prototype.open = function( index ) {
+        this.storedScrollPosition = $( '.non-menu' ).scrollTop();
         this.$element.addClass('owl-carousel');
         this.$element.owlCarousel({
-          items: 1,
-          dots: false,
-          startPosition: index,
-          mouseDrag: false,
-          touchDrag: false,
-          pullDrag: false,
-          nav: true,
-          navText: [ 'PREV', 'NEXT' ]
+            items: 1,
+            dots: false,
+            startPosition: index,
+            mouseDrag: false,
+            touchDrag: false,
+            pullDrag: false,
+            nav: true,
+            navText: [ 'PREV', 'NEXT' ]
         });
+        this.$element.find('.owl-nav').attr('data-index', index+1 );
+        var that = this;
+        this.$element.on( 'change.owl.carousel', function( parameter ) {
+            that.$element.find('.owl-nav').attr('data-index', parameter.property.value+1 );
+        });
+
+        //Lock scrolling
+        $( '.non-menu' ).addClass('pause-scroll');
+        $( '.non-menu' ).css( 'top', -this.storedScrollPosition + 'px' );
     }
 
     Steps.prototype.close = function() {
         this.$element.trigger( 'destroy.owl.carousel' );
+        this.$element.off( 'change.owl.carousel' );
         this.$element.removeClass('owl-carousel');
+
+        //Unlock scrolling
+        $( '.non-menu' ).removeClass('pause-scroll');
+        $( '.non-menu' ).css('top', '');
+        $( '.non-menu' ).scrollTop( this.storedScrollPosition );
     }
 
     // *. Public variables and functions

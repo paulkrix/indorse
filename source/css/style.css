@@ -743,7 +743,7 @@ nav .title {
 nav .line {
   position: absolute;
   height: 1px;
-  background-color: #9cc398;
+  background-color: red;
   left: 1.875rem;
   right: 1.875rem;
   top: 50%;
@@ -807,6 +807,7 @@ nav .fab--menu {
   bottom: 0;
   width: 100%;
   right: 0;
+  overflow-y: scroll;
 }
 
 .body--menu-open .non-menu {
@@ -1144,7 +1145,7 @@ nav .fab--menu {
   width: 25px;
   height: 11px;
   font-size: 11px;
-  color: #d18003;
+  color: red;
 }
 
 .steps-block .steps .steps__step .steps__step--header {
@@ -1194,7 +1195,7 @@ nav .fab--menu {
 }
 
 .steps-block .steps .steps__step:hover:after {
-  color: #9f6102;
+  color: #cc0000;
 }
 
 .steps-block .steps.owl-carousel {
@@ -1279,12 +1280,16 @@ nav .fab--menu {
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: #d18003;
+  color: red;
   font-size: 2.1875rem;
 }
 
 .steps-block .steps.owl-carousel .steps__step .steps__step-close-btn:hover {
-  color: #9f6102;
+  color: #cc0000;
+}
+
+.steps-block .steps.owl-carousel .steps__step .steps__step-close-btn:before {
+  color: inherit;
 }
 
 .steps-block .steps.owl-carousel .owl-nav {
@@ -1302,6 +1307,10 @@ nav .fab--menu {
   font-family: "Reem Kufi", sans-serif;
 }
 
+.steps-block .steps.owl-carousel .owl-nav button:hover {
+  background-color: #6b81d2;
+}
+
 .steps-block .steps.owl-carousel .owl-nav button:focus {
   outline: none;
 }
@@ -1315,12 +1324,21 @@ nav .fab--menu {
   cursor: default;
 }
 
+.steps-block .steps.owl-carousel .owl-nav button.disabled:hover {
+  background-color: #92a2de;
+}
+
 .steps-block .steps.owl-carousel .owl-nav:after {
-  content: counter(step-counter);
+  content: attr(data-index);
   width: 20%;
   font-family: "Reem Kufi", sans-serif;
   text-align: center;
   display: inline-block;
   font-size: 18px;
   font-weight: 500;
+}
+
+.pause-scroll {
+  position: fixed;
+  overflow: visible;
 }
