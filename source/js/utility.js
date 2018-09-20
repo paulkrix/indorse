@@ -68,7 +68,10 @@ var Genesis = (function( my, $ ) {
         this.$element.find('.owl-nav').attr('data-index', index+1 );
         var that = this;
         this.$element.on( 'change.owl.carousel', function( parameter ) {
-            that.$element.find('.owl-nav').attr('data-index', parameter.property.value+1 );
+            console.log( parameter );
+            if( parameter.name === 'position' ) {
+                that.$element.find('.owl-nav').attr('data-index', parameter.property.value+1 );
+            }
         });
 
         //Lock scrolling

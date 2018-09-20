@@ -11,7 +11,7 @@
                 padding-right: map-get( $block-padding, right );
             }
             @if( map-has-key( $layout , width ) ) {
-              @include grid-width(8);
+              @include grid-width( map-get( $layout, width ) );
             }
         }
     }

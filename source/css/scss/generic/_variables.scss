@@ -211,6 +211,14 @@ $text-block-layout: (
     )
 );
 
+$steps-block-layout: (
+    medium: (
+      width: 8
+    ),
+    xlarge: (
+      width: 6
+    )
+);
 
 // Container
 $container-layout: (

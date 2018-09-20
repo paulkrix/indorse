@@ -1,12 +1,20 @@
 .steps-block {
     padding-top: 0;
     padding-bottom: 0;
+    @include max-width();
 
     .steps {
         margin: 0;
         list-style: none;
         counter-reset: step-counter;
-        @include max-width();
+
+        @each $breakpoint, $layout in $steps-block-layout {
+            @include breakpoint( $breakpoint ) {
+                @if( map-has-key( $layout , width ) ) {
+                  @include grid-width( map-get( $layout, width ) );
+                }
+            }
+        }
 
         .steps__step {
             position: relative;
@@ -87,6 +95,7 @@
             bottom: 0;
             overflow-y: scroll;
             z-index: 200;
+            width: 100%;
 
             .steps__step {
                 width: 100%;
