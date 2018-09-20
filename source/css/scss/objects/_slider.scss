@@ -3,6 +3,7 @@
     padding-top: 0;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 0;
 
     .slider {
 
@@ -19,11 +20,6 @@
             -webkit-overflow-scrolling: touch;
             padding: rem-calc( 0 20px );
 
-            // &::before {
-            //   content: "";
-            //   display: block;
-            //   flex: 0 0 auto;
-            // }
             &::after {
               content: "";
               display: block;

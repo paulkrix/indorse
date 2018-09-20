@@ -38,6 +38,7 @@ var Genesis = (function( my, $ ) {
         this.$element.addClass('owl-carousel');
         this.$element.owlCarousel({
           items: 1,
+          dots: false,
           startPosition: index,
           mouseDrag: false,
           touchDrag: false,
