@@ -17,16 +17,24 @@ var Genesis = (function( my, $ ) {
     var Menu = function( _element, _button ) {
         this.$element = $( _element );
         this.$button = $( _button );
-        this.registerHandlers();
+        this.registerHandlers( this );
     }
     Menu.prototype.$element = null;
     Menu.prototype.$button = null;
 
-    Menu.prototype.registerHandlers = function() {
-        this.$button.on('click', this.toggle );
+    Menu.prototype.registerHandlers = function( that ) {
+        this.$button.on('click', this.toggle.bind( that ) );
     }
     Menu.prototype.toggle = function() {
         $('body').toggleClass('body--menu-open');
+        $('body').addClass('body--menu-transition');
+        var that = this;
+        this.$element.on(
+            "transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd",
+            function() {
+                that.$element.off( "transitionend MSTransitionEnd webkitTransitionEnd oTransitionEnd" );
+                $('body').removeClass('body--menu-transition');
+        });
     }
 
     // *. Steps

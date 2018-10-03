@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% block head %}
+      {% embed "head.twig" %}{% endembed %}
+    {% endblock %}
+    <body>
+        {% block foot %}
+            {% embed "foot.twig" %}{% endembed %}
+        {% endblock %}
+    </body>
+</html>

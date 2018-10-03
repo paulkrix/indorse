@@ -2,15 +2,23 @@
     &.heading-block {
         text-align: center;
         position: relative;
-        @include grid-width( 8 );
-
         @each $breakpoint, $layout in $heading-block-layout {
+            // @include breakpoint( $breakpoint ) {
+            //   $block-padding: map-get( $layout, padding );
+            //   padding-top: map-get( $block-padding, top );
+            //   padding-bottom: map-get( $block-padding, bottom );
+            //   padding-left: map-get( $block-padding, left );
+            //   padding-right: map-get( $block-padding, right );
+            // }
             @include breakpoint( $breakpoint ) {
-              $block-padding: map-get( $layout, padding );
-              padding-top: map-get( $block-padding, top );
-              padding-bottom: map-get( $block-padding, bottom );
-              padding-left: map-get( $block-padding, left );
-              padding-right: map-get( $block-padding, right );
+                @if( map-has-key( $layout , padding ) ) {
+                    $block-padding: map-get( $layout, padding );
+                    padding-left: map-get( $block-padding, left );
+                    padding-right: map-get( $block-padding, right );
+                }
+                @if( map-has-key( $layout , width ) ) {
+                  @include grid-width( map-get( $layout, width ) );
+                }
             }
         }
 

@@ -84,16 +84,27 @@ nav {
 
 .non-menu {
     transition: 250ms right ease-out;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
     right: 0;
-    overflow-y: scroll;
+}
+
+.body--menu-transition {
+    .non-menu {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        right: 0;
+        overflow-y: scroll;
+    }
 }
 
 .body--menu-open {
     .non-menu {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        overflow-y: scroll;
         right: rem-calc( 260px );
     }
     .menu {

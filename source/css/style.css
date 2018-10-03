@@ -802,6 +802,10 @@ nav .fab--menu {
 
 .non-menu {
   transition: 250ms right ease-out;
+  right: 0;
+}
+
+.body--menu-transition .non-menu {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -811,6 +815,11 @@ nav .fab--menu {
 }
 
 .body--menu-open .non-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  overflow-y: scroll;
   right: 16.25rem;
 }
 
@@ -884,16 +893,19 @@ nav .fab--menu {
 .block.heading-block {
   text-align: center;
   position: relative;
-  width: 80%;
-  margin: 0 auto;
 }
 
 @media screen and (min-width: 0) {
   .block.heading-block {
-    padding-top: 1.875rem;
-    padding-bottom: 1.875rem;
     padding-left: 0.9375rem;
     padding-right: 0.9375rem;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .block.heading-block {
+    width: 80%;
+    margin: 0 auto;
   }
 }
 
