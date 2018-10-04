@@ -59,7 +59,6 @@ var Genesis = (function( my, $ ) {
     }
 
     function requestTick() {
-        console.log("requestTick", ticking);
         if( !ticking ) {
             requestAnimationFrame( update );
         }
@@ -67,7 +66,6 @@ var Genesis = (function( my, $ ) {
     }
 
     function update() {
-      console.log("updating", ticking);
         ticking = false;
         var scrollTop = latestScrollY;
         for( var i = 0; i < spinners.length; i++ ) {
