@@ -24,21 +24,14 @@ var Genesis = (function( my, $ ) {
 
     var Spinner = function( _element ) {
         this.$element = $( _element );
-        this.setBounds();
     }
     Spinner.prototype.top = null;
     Spinner.prototype.bottom = null;
     Spinner.prototype.$element = null;
-    Spinner.prototype.setBounds = function() {
-        this.top = this.$element.offset().top - $( window ).height();
-        if( this.top < 0 ) {
-            this.top = 0;
-        }
-        var largestDimension = Math.max( this.$element.height(), this.$element.width() );
-        this.bottom = this.$element.offset().top+largestDimension;
-    }
+
     Spinner.prototype.spin = function( scrollTop ) {
-        if( scrollTop > this.top && scrollTop < this.bottom ) {
+        var boundingRect = this.$element[0].getBoundingClientRect();
+        if( boundingRect.top < $( window ).height() && boundingRect.bottom > 0 ) {
             var degrees = (scrollTop - this.top)/15.0 % 360;
             this.$element.css('transform', 'rotate(' + degrees + 'deg)');
         }
@@ -46,11 +39,6 @@ var Genesis = (function( my, $ ) {
 
     function registerListeners() {
         $( window ).scroll( onScroll );
-        $( window ).resize( function() {
-            for( var i = 0; i < spinners.length; i++ ) {
-                spinners[i].setBounds.call( spinners[i] );
-            }
-        });
     }
 
     function onScroll() {
