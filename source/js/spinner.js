@@ -19,6 +19,8 @@ var Genesis = (function( my, $ ) {
     // --------
 
     var spinners = [];
+    var latestScrollY = 0;
+    var ticking = false;
 
     var Spinner = function( _element ) {
         this.$element = $( _element );
@@ -29,8 +31,6 @@ var Genesis = (function( my, $ ) {
     Spinner.prototype.$element = null;
     Spinner.prototype.setBounds = function() {
         this.top = this.$element.offset().top - $( window ).height();
-        // console.log( "window height", $(window).height() );
-        // console.log( "top", this.top );
         if( this.top < 0 ) {
             this.top = 0;
         }
@@ -45,17 +45,34 @@ var Genesis = (function( my, $ ) {
     }
 
     function registerListeners() {
-        $( window ).scroll( function() {
-            var scrollTop = $(window).scrollTop();
-            for( var i = 0; i < spinners.length; i++ ) {
-                spinners[i].spin.call( spinners[i], scrollTop );
-            }
-        });
+        $( window ).scroll( onScroll );
         $( window ).resize( function() {
             for( var i = 0; i < spinners.length; i++ ) {
                 spinners[i].setBounds.call( spinners[i] );
             }
         });
+    }
+
+    function onScroll() {
+        latestScrollY = $(window).scrollTop();
+        requestTick();
+    }
+
+    function requestTick() {
+        console.log("requestTick", ticking);
+        if( !ticking ) {
+            requestAnimationFrame( update );
+        }
+        ticking = true;
+    }
+
+    function update() {
+      console.log("updating", ticking);
+        ticking = false;
+        var scrollTop = latestScrollY;
+        for( var i = 0; i < spinners.length; i++ ) {
+            spinners[i].spin.call( spinners[i], scrollTop );
+        }
     }
 
     function initialiseSpinners() {
