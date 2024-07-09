@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: indorse
+  description: A website for recommendations
+spec:
+  type: website
+  lifecycle: production
+  owner: dank-team
